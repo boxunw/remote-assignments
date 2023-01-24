@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignemnt3</title>
+    <script src="jquery-3.6.3.min.js"></script>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                document.getElementById("number10").textContent = xhr.responseText;
+            }
+        };
+        xhr.open('GET', 'http://localhost:3000/data?number=10');
+        xhr.send();
+
+        $(function(){
+        $("#submitbutton").click(function(){
+            var data = $("#form1").serialize();
+            $.ajax({
+                url : 'http://localhost:3000/ajax',
+                type : 'post',
+                data : data,
+                success : function(result) {
+                    document.getElementById("numberN").textContent = `${result}`;
+                },
+                error : function(result) {
+                    alert("Fail")
+                }
+            });
+
+        })
+    });
+    </script>
+</head>
+<body>
+    <div id="number10">
+
+    </div>
+    <form id="form1" action="">
+        <label>Please enter a number.
+            <input type="text" name="number"></input>
+        </label>
+        <button type="summit" id="submitbutton">summit</button>
+    </form>
+    <div id="numberN">
+
+    </div>
+</body>
+</html>

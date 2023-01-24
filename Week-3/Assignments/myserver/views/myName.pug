@@ -1,0 +1,12 @@
+doctype html
+html
+    head 
+        title myName page
+    body 
+    if name 
+        h2 #{name}
+    else    
+        form(action='/myName', method='post')
+            lable Please enter your name: 
+                input(type='text', name='username')
+            button(type='submit') Submit 
